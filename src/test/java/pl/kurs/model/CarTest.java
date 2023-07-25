@@ -17,6 +17,7 @@ public class CarTest {
 
     @Test
     public void shouldReturnFerrariOnGetProduceR() {
+        // TAK NIE ROBIMY!!!
         //new Car("Ferrari");
         Mockito.when(car.getProducer()).thenReturn("Ferrari");
         assertEquals("Ferrari", car.getProducer());
