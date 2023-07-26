@@ -43,13 +43,13 @@ public class SignalControl2 {
 
     }
 
-    private void setLight() {
+    public void setLight() {
         double distance = distanceSensor.getDistance();
 
         if (isTheCarOnSignal()) {
             setGreen();
         } else if (distance <= 300 && distance > 100) {
-            giveAFineIfDeserved();
+            giveAFineImmediatelyIfDeserved();
         } else if (distance <= 100 && distance > 50) {
             setLightFor100mRange();
         } else if (distance <= 50) {
@@ -94,15 +94,13 @@ public class SignalControl2 {
         }
     }
 
-    public void giveAFineIfDeserved() {
+    public void giveAFineImmediatelyIfDeserved() {
         double speed = speedSensor.getSpeed();
         if (speed >= 100) {
             lightController.setRed();
             addFine();
         } else {
-            lightController.setYellow();
+            lightController.setGreen();
         }
     }
-
-
 }
